@@ -25,7 +25,7 @@ namespace Application.Controllers
         // GET: api/Employees/5
         [ResponseType(typeof(Employee))]
         public IHttpActionResult GetEmployee(int id)
-        {
+        {       
             Employee employee = db.Employee.Find(id);
             if (employee == null)
             {
