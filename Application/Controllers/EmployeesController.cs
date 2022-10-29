@@ -22,8 +22,9 @@ namespace Application.Controllers
             return db.Employee;
         }
 
+
         // GET: api/Employees/5
-        [ResponseType(typeof(Employee))]
+        [ResponseType(typeof(List<Employee>))]
         public IHttpActionResult GetEmployee(int id)
         {       
             Employee employee = db.Employee.Find(id);
@@ -32,7 +33,7 @@ namespace Application.Controllers
                 return NotFound();
             }
 
-            return Ok(employee);
+            return Ok(db.Employee.ToList().ConvertAll(x=> new MaskEmployees(x)));
         }
 
         // PUT: api/Employees/5
